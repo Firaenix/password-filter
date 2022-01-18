@@ -2,8 +2,8 @@ use wasm_bindgen::prelude::*;
 use xorf::{BinaryFuse8, Filter};
 extern crate console_error_panic_hook;
 
-#[wasm_bindgen]
-pub fn is_known_compromised_password(password: &str) -> bool {
+#[wasm_bindgen(js_name = isCompromisedPassword)]
+pub fn is_compromised_password(password: &str) -> bool {
     console_error_panic_hook::set_once();
 
     let read_bytes = include_bytes!("../xorfilter.bin");
@@ -14,11 +14,10 @@ pub fn is_known_compromised_password(password: &str) -> bool {
     sha1.update(password.as_bytes());
     let sha_hex = sha1.digest().to_string();
 
-    let bytes = hex::decode(&sha_hex).unwrap();
-
-    let prefix: [u8; 8] = [bytes[0], bytes[1], bytes[2], bytes[3], 
-    bytes[4], bytes[5], bytes[6], bytes[7]];
-    let hexval = u64::from_be_bytes(prefix);
+    let hexval = match u64::from_str_radix(&sha_hex[0..16], 16) {
+        Ok(v) => v,
+        Err(_) => return false
+    };
 
     reconst_filter.contains(&hexval)
 }

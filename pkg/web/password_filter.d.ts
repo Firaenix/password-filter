@@ -4,13 +4,13 @@
 * @param {string} password
 * @returns {boolean}
 */
-export function is_known_compromised_password(password: string): boolean;
+export function isCompromisedPassword(password: string): boolean;
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
-  readonly is_known_compromised_password: (a: number, b: number) => number;
+  readonly isCompromisedPassword: (a: number, b: number) => number;
   readonly __wbindgen_export_0: WebAssembly.Table;
   readonly __wbindgen_malloc: (a: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number) => number;

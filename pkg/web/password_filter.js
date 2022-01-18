@@ -75,10 +75,10 @@ function passStringToWasm0(arg, malloc, realloc) {
 * @param {string} password
 * @returns {boolean}
 */
-export function is_known_compromised_password(password) {
+export function isCompromisedPassword(password) {
     var ptr0 = passStringToWasm0(password, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
     var len0 = WASM_VECTOR_LEN;
-    var ret = wasm.is_known_compromised_password(ptr0, len0);
+    var ret = wasm.isCompromisedPassword(ptr0, len0);
     return ret !== 0;
 }
 
