@@ -1,6 +1,6 @@
 # Password Filter
 
-A Cuckoo filter that stores the top 1,000,000 most compromised passwords from https://haveibeenpwned.com/Passwords. 
+A Binary Fuse filter that stores the top 1,000,000 most compromised passwords from https://haveibeenpwned.com/Passwords. 
 
 Runs in WASM environments to allow quickly testing that your password is not compromised. 
 
