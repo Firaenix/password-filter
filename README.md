@@ -10,3 +10,16 @@ Runs in WASM environments to allow quickly testing that your password is not com
 
 ### Test querying your xorfilter.bin
 1. cargo run --example query_filter --release
+
+## Install in NodeJS
+I couldn't get the password-filter npm library so I'm using pwned-pass instead
+NodeJS:  
+`npm install pwned-pass`
+
+Webpack:  
+`npm install pwned-pass-bundler`
+
+Deno 
+```js
+import init, {isCompromisedPassword} from 'https://deno.land/x/password_filter@1.1.0/password_filter.js';
+````
